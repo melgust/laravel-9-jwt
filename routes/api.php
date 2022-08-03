@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,13 @@ Route::group([
 });
 
 Route::group([
-    'middleware' => ['before' => 'jwt.auth']
+    //'middleware' => ['before' => 'jwt.auth']
 ], function ($router) {
     Route::apiResource('products', ProductController::class);
+});
+
+Route::group([
+    //'middleware' => ['before' => 'jwt.auth']
+], function ($router) {
+    Route::apiResource('orders', OrderController::class);
 });
