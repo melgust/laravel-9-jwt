@@ -36,10 +36,5 @@ Route::group([
     //'middleware' => ['before' => 'jwt.auth']
 ], function ($router) {
     Route::apiResource('products', ProductController::class);
-});
-
-Route::group([
-    //'middleware' => ['before' => 'jwt.auth']
-], function ($router) {
     Route::apiResource('orders', OrderController::class);
 });

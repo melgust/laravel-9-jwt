@@ -13,6 +13,10 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'tc_user';
+    protected $primaryKey = 'user_id';
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *

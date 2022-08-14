@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order_details', function (Blueprint $table) {
-            $table->id();
+        Schema::create('tt_order_detail', function (Blueprint $table) {
+            $table->id('order_detail_id');
             $table->bigInteger('order_id')->unsigned();
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('order_id')->on('tt_order');
             $table->bigInteger('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('product_id')->on('tc_product');
             $table->integer('quantity');
-            $table->timestamps();
+            $table->decimal('amount', 15, 2)->nullable();
+            $table->tinyinteger('status_id')->default(1);
+            $table->datetime('created_at')->useCurrent();
+            $table->datetime('updated_at')->nullable();
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('tt_order_detail');
     }
 };
