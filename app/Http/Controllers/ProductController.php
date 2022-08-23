@@ -17,9 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json([
-            'products' => $products
-        ]);
+        return response()->json($products, 200);
     }
 
     /**
@@ -59,9 +57,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return response()->json($product, 200);
     }
 
     /**
